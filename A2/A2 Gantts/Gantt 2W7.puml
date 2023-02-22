@@ -1,0 +1,43 @@
+@startuml
+' Preview with Alt D
+' Date: 23-02-2023
+@startgantt
+hide ressources names
+skinparam classFontSize 5
+'Main Goals
+Project starts 2023-02-14
+[Project Chosen] happens at 2023-02-14
+[Assess2_Transition] lasts 7 days and is colored in Plum/Orange
+[Assess2_Transition] starts 2023-02-15
+[Change_Report] starts 2023-02-22
+[Change_Report] lasts 14 days and is coloured in Plum/Red
+[Implementation] starts 2023-02-22
+[Implementation] lasts 64 days and is coloured in Plum/Red
+[Continuous_Integration] starts 2023-03-08
+[Continuous_Integration] lasts 57 days and is coloured in Plum/Red
+[Software_Testing] starts 2023-03-08
+[Software_Testing] lasts 57 days and is coloured in Plum/Red
+
+'Need to allocate team
+' Transition
+[Review_Docs_and_Code] on {Callum:15%}{Chase:15%}{Craig:15%}{Kamrul:15%}{Jack:15%}{Yaseen:15%} lasts 6 days and is colored in Lavender/Green and starts after [Assess2_Transition]'s start
+[Organise_Repo_and_Website] on {Jack:33%}{Callum:33%}{Kamrul:33%} lasts 6 days and is colored in Lavender/Green and starts after [Assess2_Transition]'s start
+
+' Change_Report
+[Conventions_For_Changes] lasts 7 days and is colored in Lavender/Orange and starts after [Change_Report]'s start
+[Refactor_Documentation] lasts 14 days and is colored in Lavender/Orange and starts after [Change_Report]'s start
+
+' Implementation
+[Refactor_Code] lasts 14 days and is colored in Lavender/Orange and starts after [Implementation]'s start
+[Asset_Collection] lasts 7 days and is colored in Lavender/Orange and starts after [Implementation]'s start
+
+
+
+
+
+
+
+
+
+@endgantt
+@enduml
