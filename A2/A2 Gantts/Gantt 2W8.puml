@@ -1,7 +1,6 @@
 @startuml
 ' Preview with Alt D
-' Date: 23-02-2023
-@startgantt
+' Date: 01-03-2023
 hide ressources names
 skinparam classFontSize 5
 'Main Goals
@@ -25,12 +24,11 @@ Project starts 2023-02-14
 [Organise_Repo_and_Website] on {Jack:33%}{Callum:33%}{Kamrul:33%} lasts 6 days and is colored in Lavender/Green and starts after [Assess2_Transition]'s start
 
 ' Change_Report
-[Conventions_For_Changes] on {Callum:40%}{Kamrul:10%} lasts 3 days and is colored in Lavender/Orange and starts after [Change_Report]'s start
+[Conventions_For_Changes] on {Callum:40%}{Kamrul:10%} lasts 3 days and is colored in Lavender/Green and starts after [Change_Report]'s start
 [Refactor_Documentation] on {Kamrul:40%}{Callum:30%} lasts 9 days and is colored in Lavender/Orange and starts after [Change_Report]'s start
 
 ' Implementation
 [Refactor_Code] on {Yaseen:33%}{Chase:33%}{Jack:33%} lasts 13 days and is colored in Lavender/Orange and starts after [Implementation]'s start
-[Asset_Collection] on {Craig:30%} lasts 2 days and is colored in Lavender/Orange and starts after [Implementation]'s start
+[Asset_Collection] on {Craig:30%} lasts 2 days and is colored in Lavender/Green and starts after [Implementation]'s start
 
-@endgantt
 @enduml
