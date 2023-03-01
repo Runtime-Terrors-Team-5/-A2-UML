@@ -1,0 +1,30 @@
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor red
+title Save&Load
+
+actor ScenarioGameMaster as GM
+participant saveData
+participant saveHandler
+participant file
+
+
+group Saving
+    GM -> saveHandler : Save()
+    GM -> saveData : Game data
+    saveData -> file : Formated Data
+
+
+
+end
+
+group loading
+    GM -> saveHandler : load()
+
+    file -> saveData : Formated Data
+    saveData -> GM : Game data
+
+end
+
+@enduml
