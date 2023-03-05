@@ -1,0 +1,31 @@
+' Preview with Alt D
+' Sequence Diagram for powerups
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor red
+title Chef\nPowerups
+
+actor Active_Chef as Chef
+participant Balance as Money
+entity Powerup as Power
+entity GUI_Prompt as GUI
+
+' Checking for correct funds
+group Balance Checking
+    Chef -> Power : Interact()
+    Money -> Power : Pay(Powerup)
+    Money <- Power : Returns price n
+    ' Activates powerup / prompts user to earn money
+    alt Sufficient Funds (n)
+        Money -> Money : Balance = Balance - n
+        Chef <- Power  : Activate()
+        note right : Example: Increased move speed
+    else Insufficent Funds
+        Power -> GUI : Insufficent Funds Prompt
+        note left: Prompts user to earn funds
+    end
+end
+Power -> Power : Respawn()
+note left: Respawns powerup to be re-purchased
+@enduml
