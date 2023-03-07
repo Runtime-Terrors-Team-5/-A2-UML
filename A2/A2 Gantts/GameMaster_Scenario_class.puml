@@ -1,0 +1,55 @@
+@startuml
+class GameMaster{
+
+public GameMaster()
+}
+
+class ScenarioGameMaster extends GameMaster{
+      PiazzaPanicGame game;
+      TiledMap map;
+      TiledMapTileLayer collisionLayer;
+      ArrayList<Chef> chefs = new ArrayList<>();
+      Stack<Customer> customers = new Stack<>();
+      ArrayList<Machine> machines = new ArrayList<>();
+      ArrayList<String> tray = new ArrayList<>();
+      int selectedChef;
+      float totalTimer;
+      Sound grill;
+      Sound chopping;
+      Sound serving;
+      Sound fridge;
+      Sound forming;
+      Sound trash;
+      float soundVolume;
+      ArrayList<String> settings;
+      int level;
+
+  public  ScenarioGameMaster(PiazzaPanicGame game, TiledMap map, int chefno, int custno,int level)
+  public ScenarioGameMaster(ArrayList<Sextet> chefdata, ArrayList<Triplet> customerData,PiazzaPanicGame game, int level, int selectedChef,ArrayList<Septet> machinedata,ArrayList<String> trayContent, float timeElapsed)
+
+public saveData generateSaveData()
+public void setSelectedChef(int selectedChef)
+public int getSelectedChef()
+ public Chef getChef(int i)
+public void tryMove(String direction)
+
+private boolean wouldNotCollide(int x, int y, int chefno)
+public String generateHoldingsText()
+ public String generateCustomersTrayText()
+ public String generateTimerText()
+ public String getMachineTimerForChef(int chefno)
+
+  public int getCustomersRemining()
+ public Customer getFirstCustomer()
+ public void tickUpdate(float delta)
+  public void tryInteract()
+ private void addToTray()
+
+
+
+
+
+}
+
+
+@enduml

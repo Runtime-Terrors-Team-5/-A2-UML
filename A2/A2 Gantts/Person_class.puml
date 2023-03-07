@@ -1,0 +1,76 @@
+@startuml
+class Person{
+    private final String name;
+    private int xCoord;
+    private int yCoord;
+    public Person(String name, int xCoord, int yCoord)
+     public int getxCoord()#
+      public int getyCoord()
+     public void setxCoord
+      public void setyCoord
+      public void alterxCoord(int xDelta)
+     public void alteryCoord(int yDelta)
+}
+class Customer extends Person{
+private String order;
+    private final Texture txUp;
+    private final Texture txLeft;
+
+public Customer(String name, int xCoord, int yCoord, String order)
+
+ public String getOrder()
+ public Texture getTxUp()
+public Texture getTxLeft()
+    public Triplet getCustomerData()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+class Chef extends Person {
+ private boolean isStickied;
+    private Stack<String> inventory;
+    private String facing;
+    private final Texture txUp;
+    private final Texture txDown;
+    private final Texture txLeft;
+    private final Texture txRight;
+    private Texture txNow;
+    private boolean isInteracting;
+    private Machine machineInteractingWith;
+    private int chefNumb;
+
+
+public Chef(String name, int xCoord, int yCoord, int chopSpeed, int frySpeed, int bakeSpeed, boolean isStickied, Stack<String> inventory, int textureSet)
+public Chef(String name,Sextet chef)
+ public boolean getIsStickied()
+ public Texture getTxNow()
+ public void setIsStickied(boolean flag)
+ public void setMachineInteractingWith(Machine machine)
+ public Machine getMachineInteractingWith()
+ public Stack<String> getInventory()
+ public void addToInventory(String item)
+ public void removeTopFromInventory()
+ public String getFacing()
+ public void setFacing(String facing)
+  public int getChefNumb()
+ public Sextet getChefInfo()
+}
+
+
+
+
+
+@enduml
