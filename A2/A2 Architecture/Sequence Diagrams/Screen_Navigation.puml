@@ -1,18 +1,21 @@
 ' Preview with Alt D
-' Sequence diagram for preparing ingredients
+' Sequence diagram for screen  navigation and difficulty selection
 @startuml
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
-skinparam titleBorderColor red
+skinparam titleBorderColor blue
 title Screen\nNavigation
 
-
+box Help Screens
 entity Credit_Screen as Credits
 entity Tutorial_Screen as Help
+end box
 actor User as User
 entity Main_Menu as Menu
+box Play Screens
 entity Play_Screen as Game
-
+entity Difficulty_Selection as Diff
+end box
 
 ' Menu, Interacting with buttons, Once game loads exits menu screen loop
 ' Loop used to allow users to return to menu screen after done with credits and tutorial
@@ -27,6 +30,8 @@ group Menu
             Help <- User : Render (Tutorial)
             note right: Once back button is pressed, loops to menu
         else Scenario Mode Button Pressed
+            User -> Diff : Render (Difficulty Selection)
+            note left: Selects easy, medium or hard which \n configures scenario before rendering \n the play screen.
             User -> Game : Render (Play_Screen)
             note left: Breaks Menu Loop
         else Endless Mode Button Pressed

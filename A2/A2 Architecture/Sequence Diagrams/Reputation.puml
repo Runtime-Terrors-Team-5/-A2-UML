@@ -1,0 +1,40 @@
+' Preview with Alt D
+' Sequence diagram representing reputation loss over time
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+title Restaurant\nReputation
+
+actor User as User
+entity Play_Screen as Game
+participant Reputation as Rep
+actor Customer as Cust
+entity Victory_Screen as Win
+entity Loss_Screen as Loss
+entity Menu_Screen as Menu
+
+' Main running of the game, with the focus on Reputation Loss
+group Game
+    User -> Game : Render (Play_Screen)
+    User -> Rep : SetReputation(3)
+    loop while (Reputation > 0) OR (Remaining_Customers > 0) 
+        note over Rep, Cust: Game In Progress until run out of customers/reputation
+        group #LightSalmon Missed_Order
+            Cust -> Cust : Remove_Cus(Customer)
+            Cust -> Rep : Decrement(Reputation)
+        end
+    end
+end
+
+' Final Outcomes of the game
+alt #LightGreen (Reputation > 0) Success
+    Game -> Win : Render(Victory_Screen)
+    note left: User can exit victory screen
+    User -> Menu : Render(Menu_Screen)
+else #LightPink Fail
+    Game -> Loss : Render(Loss_Screen)
+    note left: User can exit victory screen
+    User -> Menu : Render(Menu_Screen)
+end
+@enduml

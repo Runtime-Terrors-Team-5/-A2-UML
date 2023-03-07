@@ -3,7 +3,7 @@
 @startuml
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
-skinparam titleBorderColor red
+skinparam titleBorderColor blue
 title Chef\nPowerups
 
 actor Active_Chef as Chef
@@ -17,15 +17,15 @@ group Balance Checking
     Money -> Power : Pay(Powerup)
     Money <- Power : Returns price n
     ' Activates powerup / prompts user to earn money
-    alt Sufficient Funds (n)
+    alt #LightGreen Sufficient Funds (n)
         Money -> Money : Balance = Balance - n
         Chef <- Power  : Activate()
         note right : Example: Increased move speed
-    else Insufficent Funds
+        Power -> Power : Respawn()
+        note left: Respawns powerup to be re-purchased
+    else #LightPink Insufficent Funds
         Power -> GUI : Insufficent Funds Prompt
         note left: Prompts user to earn funds
     end
 end
-Power -> Power : Respawn()
-note left: Respawns powerup to be re-purchased
 @enduml

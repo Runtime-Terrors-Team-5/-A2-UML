@@ -1,7 +1,7 @@
 @startuml
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
-skinparam titleBorderColor red
+skinparam titleBorderColor blue
 title Save&Load
 
 actor ScenarioGameMaster as GM
@@ -14,9 +14,6 @@ group Saving
     GM -> saveHandler : Save()
     GM -> saveData : Game data
     saveData -> file : Formated Data
-
-
-
 end
 
 group loading

@@ -3,7 +3,7 @@
 @startuml
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
-skinparam titleBorderColor red
+skinparam titleBorderColor blue
 title Unlocking\nChefs
 
 actor Active_Chef as Chef
@@ -16,14 +16,14 @@ group Balance Checking
     Chef -> Chef2 : Interact()
     Money -> Chef2 : Pay(Chef)
     Money <- Chef2 : Returns price n
-    ' Activates powerup / prompts user to earn money
-    alt Sufficient Funds (n)
+    ' Activates chef and switches to it / prompts user to earn money
+    alt #LightGreen Sufficient Funds (n)
         Money -> Money : Balance = Balance - n
         Chef2 <- Chef2  : Activate()
         note right : Becomes usable
         Chef -> Chef2 : SwitchChef(Locked_Chef)
         note right : Switches to new re-activated chef
-    else Insufficent Funds
+    else #LightPink Insufficent Funds
         Chef2 -> GUI : Insufficent Funds Prompt
         note left: Prompts user to earn funds
     end

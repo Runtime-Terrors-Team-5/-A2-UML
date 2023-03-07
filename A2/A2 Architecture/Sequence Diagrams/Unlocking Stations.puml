@@ -3,7 +3,7 @@
 @startuml
 skinparam titleBorderRoundCorner 15
 skinparam titleBorderThickness 2
-skinparam titleBorderColor red
+skinparam titleBorderColor blue
 title Unlocking\nStations
 
 actor Active_Chef as Chef
@@ -17,11 +17,11 @@ group Balance Checking
     Money -> Station : Pay(Station)
     Money <- Station : Returns price n
     ' Unlocks Stations / prompts user to earn money
-    alt Sufficient Funds (n)
+    alt #LightGreen Sufficient Funds (n)
         Money -> Money : Balance = Balance - n
         Station <- Station  : Activate()
         note right : Becomes usable
-    else Insufficent Funds
+    else #LightPink Insufficent Funds
         Station -> GUI : Insufficent Funds Prompt
         note left: Prompts user to earn funds
     end

@@ -1,0 +1,45 @@
+' Preview with Alt D
+' Sequence diagram representing customer Patience, briefly shows placing order
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor blue
+title Customer\nPatience
+
+box Customer Interactions
+actor Customer as Cust
+participant Order_List as Order
+entity Reputation as Rep
+entity Serving_Station as Serve
+box Chef Interactions
+participant Chef_Stack as Inventory
+actor Active_Chef as Chef
+end box
+' Customer Placing order
+group Placing_Order
+    Cust -> Order : Place_Order(Meal)
+end
+
+' Customer waiting / being served
+loop While Patience > 0
+    alt #LightGreen Gets desired Meal
+        Serve <- Chef : Place(Chef_Stack[0])
+        Serve <- Inventory : Meal
+        Order -> Order : Remove_Order(Meal)
+        Serve -> Serve : Delete(Meal)
+        Cust -> Cust !! : Remove_Cus(Customer)
+        note right : End of Scenario
+    end
+' Patience loop decrements, until hits zero
+    ... 10 seconds later ...
+    Cust -> Cust : Decrement(Patience)
+end
+
+' Failed to be served
+group #LightPink Missed_Order
+    Order -> Order : Remove_Order(Meal)
+    Cust -> Cust : Remove_Cus(Customer)
+    Cust -> Rep !! : Decrement(Reputation)
+    note right: End of Scenario
+end
+@enduml
