@@ -1,0 +1,173 @@
+@startuml
+class ScreenAdapter{
+  public void show()
+ public void render(float delta)
+ public void resize(int width, int height)
+ public void hide()
+}
+
+
+
+ class CreditsScreen extends ScreenAdapter{
+
+ PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Texture credits;
+     int winWidth;
+     int winHeight;
+
+     public CreditsScreen(PiazzaPanicGame game)
+
+ }
+
+
+
+ class GameScreen extends ScreenAdapter {
+ PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Stage stage;
+     int winWidth;
+     int winHeight;
+     TiledMap map;
+     OrthogonalTiledMapRenderer renderer;
+     ScenarioGameMaster gm;
+     float unitScale;
+     float wScale;
+     float hScale;
+     int INITIAL_WIDTH;
+     int INITIAL_HEIGHT;
+     int[] renderableLayers = { 0, 1, 2 };
+     Texture selectedTexture;
+     Texture recipes;
+
+ public GameScreen(PiazzaPanicGame game, int level)
+ public GameScreen(PiazzaPanicGame game)
+
+ }
+
+ class GameWinScreen extends ScreenAdapter {
+    PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Texture bg;
+     int winWidth;
+     int winHeight;
+     float bgScaleFactor;
+     Stage stage;
+     TextButton creditsButton;
+     TextButton titleButton;
+     TextButton.TextButtonStyle buttonStyle;
+     Skin skin;
+     TextureAtlas atlas;
+     int completionTime;
+  public GameWinScreen(PiazzaPanicGame game, int completionTime)
+
+
+
+ }
+
+class IntroScreen extends ScreenAdapter {
+  PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    Animation<TextureRegion> introAnimation;
+    Texture introSheet;
+    BitmapFont font;
+    float stateTime;
+    int FRAME_COLS;
+    int FRAME_ROWS;
+    int winWidth;
+    int winHeight;
+
+    public IntroScreen(PiazzaPanicGame game)
+}
+class LeaderboardScreen extends ScreenAdapter {
+PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    BitmapFont font;
+    int winWidth;
+    int winHeight;
+    public LeaderboardScreen(PiazzaPanicGame game)
+    }
+
+ class LevelSelectorScreen extends ScreenAdapter {
+ PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Texture bg;
+     Texture lock;
+     int winWidth;
+     int winHeight;
+     float bgScaleFactor;
+     Stage stage;
+     TextButton level1Button;
+     TextButton level2Button;
+     TextButton level3Button;
+     TextButton loadButton;
+     TextButton.TextButtonStyle buttonStyle;
+     Skin skin;
+     TextureAtlas atlas;
+public LevelSelectorScreen(PiazzaPanicGame game)
+}
+
+class TitleScreen extends ScreenAdapter {
+  PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    BitmapFont font;
+    Texture bg;
+    int winWidth;
+    int winHeight;
+    float bgScaleFactor;
+    Stage stage;
+    TextButton playButton;
+    TextButton tutorialButton;
+    TextButton leaderboardButton;
+    TextButton creditsButton;
+    TextButton settingsButton;
+    TextButton exitButton;
+    TextButton.TextButtonStyle buttonStyle;
+    Skin skin;
+    TextureAtlas atlas;
+     public TitleScreen(PiazzaPanicGame game)
+     }
+
+    class TutorialScreen extends ScreenAdapter {
+     PiazzaPanicGame game;
+         OrthographicCamera camera;
+         SpriteBatch batch;
+         BitmapFont font;
+         Texture tutorial;
+         int winWidth;
+         int winHeight;
+         String continueTo;
+         public TutorialScreen(PiazzaPanicGame game, String continueTo)
+         }
+class SettingsScreen extends ScreenAdapter {
+  PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    BitmapFont font;
+    Texture bg;
+    Stage stage;
+    TextButton fullscreenButton;
+    TextButton volumeFullButton;
+    TextButton volumeHalfButton;
+    TextButton volumeNoneButton;
+    TextButton.TextButtonStyle buttonStyle;
+    Skin skin;
+    TextureAtlas atlas;
+    int winWidth;
+    int winHeight;
+    ArrayList<String> settings;
+ public SettingsScreen(PiazzaPanicGame game)
+ }
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+class Utility {
+ public static String settingsFilepath = "./settings.txt";
+private Utility()
+public static ArrayList<String> getSettings()
+ public static void setSettings(ArrayList<String> settings)
+ private static void settingsFileExistenceHandler()
+}
+
+class Machine{
+ private final String type;
+    private final String input;
+    private final String output;
+    private final float processingTime;
+    private final Boolean sticky;
+    private Boolean active;
+    private float runtime;
+    private Chef operator;
+
+ public Machine(String type, String input, String output, float processingTime, Boolean sticky)
+public Machine(Septet machine, ArrayList<Chef> chefs)
+ public void process(Chef chef)
+ public void attemptGetOutput()
+public void incrementRuntime(float delta)
+public float getRuntime()
+public boolean getActive()
+public float getProcessingTime()
+public String getOutput()
+public Septet getMachineInfo()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

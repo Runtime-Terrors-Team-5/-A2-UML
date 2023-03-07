@@ -1,0 +1,351 @@
+@startuml
+class GameMaster{
+
+public GameMaster()
+}
+
+class ScenarioGameMaster extends GameMaster{
+      PiazzaPanicGame game;
+      TiledMap map;
+      TiledMapTileLayer collisionLayer;
+      ArrayList<Chef> chefs = new ArrayList<>();
+      Stack<Customer> customers = new Stack<>();
+      ArrayList<Machine> machines = new ArrayList<>();
+      ArrayList<String> tray = new ArrayList<>();
+      int selectedChef;
+      float totalTimer;
+      Sound grill;
+      Sound chopping;
+      Sound serving;
+      Sound fridge;
+      Sound forming;
+      Sound trash;
+      float soundVolume;
+      ArrayList<String> settings;
+      int level;
+
+  public  ScenarioGameMaster(PiazzaPanicGame game, TiledMap map, int chefno, int custno,int level)
+  public ScenarioGameMaster(ArrayList<Sextet> chefdata, ArrayList<Triplet> customerData,PiazzaPanicGame game, int level, int selectedChef,ArrayList<Septet> machinedata,ArrayList<String> trayContent, float timeElapsed)
+
+public saveData generateSaveData()
+public void setSelectedChef(int selectedChef)
+public int getSelectedChef()
+ public Chef getChef(int i)
+public void tryMove(String direction)
+
+private boolean wouldNotCollide(int x, int y, int chefno)
+public String generateHoldingsText()
+ public String generateCustomersTrayText()
+ public String generateTimerText()
+ public String getMachineTimerForChef(int chefno)
+
+  public int getCustomersRemining()
+ public Customer getFirstCustomer()
+ public void tickUpdate(float delta)
+  public void tryInteract()
+ private void addToTray()
+
+}
+
+
+class Person{
+    private final String name;
+    private int xCoord;
+    private int yCoord;
+    public Person(String name, int xCoord, int yCoord)
+     public int getxCoord()#
+      public int getyCoord()
+     public void setxCoord
+      public void setyCoord
+      public void alterxCoord(int xDelta)
+     public void alteryCoord(int yDelta)
+}
+class Customer extends Person{
+private String order;
+    private final Texture txUp;
+    private final Texture txLeft;
+
+public Customer(String name, int xCoord, int yCoord, String order)
+
+ public String getOrder()
+ public Texture getTxUp()
+public Texture getTxLeft()
+    public Triplet getCustomerData()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+class Chef extends Person {
+ private boolean isStickied;
+    private Stack<String> inventory;
+    private String facing;
+    private final Texture txUp;
+    private final Texture txDown;
+    private final Texture txLeft;
+    private final Texture txRight;
+    private Texture txNow;
+    private boolean isInteracting;
+    private Machine machineInteractingWith;
+    private int chefNumb;
+
+
+public Chef(String name, int xCoord, int yCoord, int chopSpeed, int frySpeed, int bakeSpeed, boolean isStickied, Stack<String> inventory, int textureSet)
+public Chef(String name,Sextet chef)
+ public boolean getIsStickied()
+ public Texture getTxNow()
+ public void setIsStickied(boolean flag)
+ public void setMachineInteractingWith(Machine machine)
+ public Machine getMachineInteractingWith()
+ public Stack<String> getInventory()
+ public void addToInventory(String item)
+ public void removeTopFromInventory()
+ public String getFacing()
+ public void setFacing(String facing)
+  public int getChefNumb()
+ public Sextet getChefInfo()
+}
+class SaveAndLoadHandler {
+
+ public static String savesFilepath = "save.txt";
+
+    private static Kryo kryo = new Kryo();
+private SaveAndLoadHandler()
+ public static saveData getSave()
+
+ public static void setSave(ScenarioGameMaster gm)
+private static void saveFileExistenceHandler()
+
+}
+
+class saveData implements Serializable {
+
+ private ArrayList<Sextet> chefdata;
+    private ArrayList<Septet> machinedata;
+    private int level;
+    private ArrayList<Triplet> customerdata;
+    private int selectedChef;
+    private ArrayList<String> trayContent;
+    private float timeElapled;
+
+    public saveData(ArrayList<Chef> chefs,int level, Stack<Customer> customers,int selectedChef,
+        ArrayList<Machine> machines, ArrayList<String> trayContent, float timeElapsed)
+ public ScenarioGameMaster loadGameMaster(PiazzaPanicGame game)
+ }
+
+class Utility {
+ public static String settingsFilepath = "./settings.txt";
+private Utility()
+public static ArrayList<String> getSettings()
+ public static void setSettings(ArrayList<String> settings)
+ private static void settingsFileExistenceHandler()
+}
+
+class Machine{
+ private final String type;
+    private final String input;
+    private final String output;
+    private final float processingTime;
+    private final Boolean sticky;
+    private Boolean active;
+    private float runtime;
+    private Chef operator;
+
+ public Machine(String type, String input, String output, float processingTime, Boolean sticky)
+public Machine(Septet machine, ArrayList<Chef> chefs)
+ public void process(Chef chef)
+ public void attemptGetOutput()
+public void incrementRuntime(float delta)
+public float getRuntime()
+public boolean getActive()
+public float getProcessingTime()
+public String getOutput()
+public Septet getMachineInfo()
+}
+
+
+class ScreenAdapter{
+  public void show()
+ public void render(float delta)
+ public void resize(int width, int height)
+ public void hide()
+}
+
+
+
+ class CreditsScreen extends ScreenAdapter{
+
+ PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Texture credits;
+     int winWidth;
+     int winHeight;
+
+     public CreditsScreen(PiazzaPanicGame game)
+
+ }
+
+
+
+ class GameScreen extends ScreenAdapter {
+ PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Stage stage;
+     int winWidth;
+     int winHeight;
+     TiledMap map;
+     OrthogonalTiledMapRenderer renderer;
+     ScenarioGameMaster gm;
+     float unitScale;
+     float wScale;
+     float hScale;
+     int INITIAL_WIDTH;
+     int INITIAL_HEIGHT;
+     int[] renderableLayers = { 0, 1, 2 };
+     Texture selectedTexture;
+     Texture recipes;
+
+ public GameScreen(PiazzaPanicGame game, int level)
+ public GameScreen(PiazzaPanicGame game)
+
+ }
+
+ class GameWinScreen extends ScreenAdapter {
+    PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Texture bg;
+     int winWidth;
+     int winHeight;
+     float bgScaleFactor;
+     Stage stage;
+     TextButton creditsButton;
+     TextButton titleButton;
+     TextButton.TextButtonStyle buttonStyle;
+     Skin skin;
+     TextureAtlas atlas;
+     int completionTime;
+  public GameWinScreen(PiazzaPanicGame game, int completionTime)
+
+
+
+ }
+
+class IntroScreen extends ScreenAdapter {
+  PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    Animation<TextureRegion> introAnimation;
+    Texture introSheet;
+    BitmapFont font;
+    float stateTime;
+    int FRAME_COLS;
+    int FRAME_ROWS;
+    int winWidth;
+    int winHeight;
+
+    public IntroScreen(PiazzaPanicGame game)
+}
+class LeaderboardScreen extends ScreenAdapter {
+PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    BitmapFont font;
+    int winWidth;
+    int winHeight;
+    public LeaderboardScreen(PiazzaPanicGame game)
+    }
+
+ class LevelSelectorScreen extends ScreenAdapter {
+ PiazzaPanicGame game;
+     OrthographicCamera camera;
+     SpriteBatch batch;
+     BitmapFont font;
+     Texture bg;
+     Texture lock;
+     int winWidth;
+     int winHeight;
+     float bgScaleFactor;
+     Stage stage;
+     TextButton level1Button;
+     TextButton level2Button;
+     TextButton level3Button;
+     TextButton loadButton;
+     TextButton.TextButtonStyle buttonStyle;
+     Skin skin;
+     TextureAtlas atlas;
+public LevelSelectorScreen(PiazzaPanicGame game)
+}
+
+class TitleScreen extends ScreenAdapter {
+  PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    BitmapFont font;
+    Texture bg;
+    int winWidth;
+    int winHeight;
+    float bgScaleFactor;
+    Stage stage;
+    TextButton playButton;
+    TextButton tutorialButton;
+    TextButton leaderboardButton;
+    TextButton creditsButton;
+    TextButton settingsButton;
+    TextButton exitButton;
+    TextButton.TextButtonStyle buttonStyle;
+    Skin skin;
+    TextureAtlas atlas;
+     public TitleScreen(PiazzaPanicGame game)
+     }
+
+    class TutorialScreen extends ScreenAdapter {
+     PiazzaPanicGame game;
+         OrthographicCamera camera;
+         SpriteBatch batch;
+         BitmapFont font;
+         Texture tutorial;
+         int winWidth;
+         int winHeight;
+         String continueTo;
+         public TutorialScreen(PiazzaPanicGame game, String continueTo)
+         }
+class SettingsScreen extends ScreenAdapter {
+  PiazzaPanicGame game;
+    OrthographicCamera camera;
+    SpriteBatch batch;
+    BitmapFont font;
+    Texture bg;
+    Stage stage;
+    TextButton fullscreenButton;
+    TextButton volumeFullButton;
+    TextButton volumeHalfButton;
+    TextButton volumeNoneButton;
+    TextButton.TextButtonStyle buttonStyle;
+    Skin skin;
+    TextureAtlas atlas;
+    int winWidth;
+    int winHeight;
+    ArrayList<String> settings;
+ public SettingsScreen(PiazzaPanicGame game)
+ }
+ScenarioGameMaster "1 to" -- " Many" Machine
+
+@enduml

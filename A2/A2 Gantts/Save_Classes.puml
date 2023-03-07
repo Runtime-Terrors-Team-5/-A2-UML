@@ -1,0 +1,30 @@
+@startuml
+class SaveAndLoadHandler {
+
+ public static String savesFilepath = "save.txt";
+
+    private static Kryo kryo = new Kryo();
+private SaveAndLoadHandler()
+ public static saveData getSave()
+
+ public static void setSave(ScenarioGameMaster gm)
+private static void saveFileExistenceHandler()
+
+}
+
+class saveData implements Serializable {
+
+ private ArrayList<Sextet> chefdata;
+    private ArrayList<Septet> machinedata;
+    private int level;
+    private ArrayList<Triplet> customerdata;
+    private int selectedChef;
+    private ArrayList<String> trayContent;
+    private float timeElapled;
+
+    public saveData(ArrayList<Chef> chefs,int level, Stack<Customer> customers,int selectedChef,
+        ArrayList<Machine> machines, ArrayList<String> trayContent, float timeElapsed)
+ public ScenarioGameMaster loadGameMaster(PiazzaPanicGame game)
+ }
+
+@enduml
