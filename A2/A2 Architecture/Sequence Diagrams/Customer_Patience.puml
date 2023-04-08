@@ -7,13 +7,13 @@ skinparam titleBorderColor blue
 title Customer\nPatience
 
 box Customer Interactions
-actor Customer as Cust
+entity Customer as Cust
 participant Order_List as Order
 entity Reputation as Rep
 entity Serving_Station as Serve
 box Chef Interactions
 participant Chef_Stack as Inventory
-actor Active_Chef as Chef
+entity Active_Chef as Chef
 end box
 ' Customer Placing order
 group Placing_Order

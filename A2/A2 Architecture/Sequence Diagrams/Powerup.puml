@@ -6,7 +6,7 @@ skinparam titleBorderThickness 2
 skinparam titleBorderColor blue
 title Chef\nPowerups
 
-actor Active_Chef as Chef
+entity Active_Chef as Chef
 participant Balance as Money
 entity Powerup as Power
 entity GUI_Prompt as GUI

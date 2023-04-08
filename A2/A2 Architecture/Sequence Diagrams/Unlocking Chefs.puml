@@ -6,9 +6,9 @@ skinparam titleBorderThickness 2
 skinparam titleBorderColor blue
 title Unlocking\nChefs
 
-actor Active_Chef as Chef
+entity Active_Chef as Chef
 participant Balance as Money
-actor Locked_Chef as Chef2
+EntityBackgroundColor Locked_Chef as Chef2
 entity GUI_Prompt as GUI
 
 ' Checking for correct funds

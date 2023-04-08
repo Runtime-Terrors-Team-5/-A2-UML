@@ -6,7 +6,7 @@ skinparam titleBorderThickness 2
 skinparam titleBorderColor blue
 title Unlocking\nStations
 
-actor Active_Chef as Chef
+entity Active_Chef as Chef
 participant Balance as Money
 entity LockedStation as Station
 entity GUI_Prompt as GUI
