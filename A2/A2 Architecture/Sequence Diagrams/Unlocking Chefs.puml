@@ -8,7 +8,7 @@ title Unlocking\nChefs
 
 entity Active_Chef as Chef
 participant Balance as Money
-EntityBackgroundColor Locked_Chef as Chef2
+entity Locked_Chef as Chef2
 entity GUI_Prompt as GUI
 
 ' Checking for correct funds
