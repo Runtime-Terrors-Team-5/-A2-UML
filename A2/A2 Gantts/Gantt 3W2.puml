@@ -1,0 +1,66 @@
+@startuml
+' Preview with Alt D
+' Date: 27-04-2023
+hide ressources names
+skinparam classFontSize 5
+'Main Goals
+Project starts 2023-02-14
+[Project Chosen] happens at 2023-02-14
+[Assess2_Transition] lasts 7 days and is coloured in Plum/Green
+[Assess2_Transition] starts 2023-02-15
+[Change_Report] starts 2023-02-22
+[Change_Report] lasts 21 days and is coloured in Plum/Green
+[Implementation] starts 2023-02-22
+[Implementation] lasts 57 days and is coloured in Plum/Green
+[Continuous_Integration] starts 2023-03-08
+[Continuous_Integration] lasts 50 days and is coloured in Plum/Orange
+[Software_Testing] starts 2023-03-08
+[Software_Testing] starts 2023-03-08
+[Software_Testing] lasts 50 days and is coloured in Plum/Orange
+[Submission] happens at 2023-05-03
+
+'Need to allocate team
+' Transition
+[Review_Docs_and_Code] on {Callum:15%}{Chase:15%}{Craig:15%}{Kamrul:15%}{Jack:15%}{Yaseen:15%} lasts 6 days and is coloured in Lavender/Green and starts after [Assess2_Transition]'s start
+[Organise_Repo_and_Website] on {Jack:33%}{Callum:33%}{Kamrul:33%} lasts 6 days and is coloured in Lavender/Green and starts after [Assess2_Transition]'s start
+
+' Change_Report
+[Change_Conventions] on {Callum:40%}{Kamrul:10%} lasts 3 days and is coloured in Lavender/Green and starts after [Change_Report]'s start
+[Refactor_Documentation] on {Kamrul:40%}{Callum:30%} lasts 9 days and is coloured in Lavender/Green and starts after [Change_Report]'s start
+[SCRUM_Plan_Execution] on {Callum:50%} lasts 4 days and is coloured in Lavender/Green and starts after [Refactor_Documentation]'s end
+
+' Continous Integration
+[CI_Pipeline_Plan] on {Callum:50%}{Jack:50%} lasts 7 days and is coloured in Lavender/Green and starts after [Continuous_Integration]'s start
+[CI_Pipeline_Setup] on {Callum:50%}{Jack:50%} lasts 7 days and is coloured in Lavender/Green and starts after [CI_Pipeline_Plan]'s end
+[CI_Pipeline_Execution] on {Callum:25%}{Jack:75%} lasts 36 days and is coloured in Lavender/Orange and starts after [CI_Pipeline_Setup]'s end
+
+' Software Testing
+[Testing_Approach] on {Chase:75%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Software_Testing]'s start
+[Testing_Setup] on {Chase:75%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Testing_Approach]'s end
+[Collect_Test_Data_and_Development] on {Chase:75%}{Yaseen:25%} lasts 36 days and is coloured in Lavender/Orange and starts after [Testing_Setup]'s end
+[Compile_Test_Data_and_Perform_Manual_Tests] on {Callum:50%}{Chase:50%} lasts 7 days and is coloured in Lavender/Orange and starts after [Collect_Test_Data_and_Development]'s end
+
+' Implementation
+[Refactor_Assessment_1_Code] on {Yaseen:33%}{Chase:33%}{Jack:33%} lasts 13 days and is coloured in Lavender/Green and starts after [Implementation]'s start
+[Asset_Collection] on {Craig:30%} lasts 2 days and is coloured in Lavender/Green and starts after [Implementation]'s start
+[Sprint_1] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Refactor_Assessment_1_Code]'s end
+[IM_Save_Progress] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_1]'s start
+[Sprint_2] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_1]'s end
+[IM_Fail_States] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_2]'s start
+[IM_Reputation] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_2]'s start
+[Sprint_3] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_2]'s end
+[IM_Update_Customer_Arrival] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_3]'s start
+[IM_Update_Recipies_and_Stations] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_3]'s start
+[Sprint_4] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_3]'s end
+[IM_Powerups] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 5 days and is coloured in Lavender/Green and starts after [Sprint_4]'s start
+[Cleanup_before_break] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 2 days and is coloured in Lavender/Green and starts after [IM_Powerups]'s end
+[Sprint_5] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts 7 days after [Sprint_4]'s end
+[IM_Endless_Mode] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 14 days and is coloured in Lavender/Green and starts after [Sprint_5]'s start
+[Sprint_6] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_5]'s end
+[IM_Accessibility] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_6]'s start
+[IM_Aesthetics] on {Craig:25}{Jack:25%}{Chase:25%}{Yaseen:25%} lasts 7 days and is coloured in Lavender/Green and starts after [Sprint_6]'s start
+
+2023/04/05 to 2023/04/11 are coloured in LightGrey
+2023/04/05 to 2023/04/11 are named [Spring Break]
+2023/04/05 to 2023/04/11 are closed
+@enduml
